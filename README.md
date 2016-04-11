@@ -1,3 +1,5 @@
+[![](https://jitpack.io/v/ed-george/AndroidVimeoExtractor.svg)](https://jitpack.io/#ed-george/AndroidVimeoExtractor) [![GitHub issues](https://img.shields.io/github/issues/ed-george/AndroidVimeoExtractor.svg)](https://github.com/ed-george/AndroidVimeoExtractor/issues) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/ed-george/AndroidVimeoExtractor/master/LICENSE)
+
 
 *Inspired by [YTVimeoExtractor](https://github.com/lilfaf/YTVimeoExtractor) for iOS.*
 
