@@ -16,7 +16,7 @@ Step 2: Add the dependency to your dependency list and replace ending with lates
 ```
 dependencies {
     // ...
-    compile 'uk.breedrapps:vimeoextractor:<latest version>'
+    compile 'com.github.ed-george:AndroidVimeoExtractor:<latest-version>'
 }
 ```
 
