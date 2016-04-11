@@ -1,0 +1,99 @@
+package uk.breedrapps.vimeoextractor;
+
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+
+import java.io.IOException;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
+
+/**
+ * Created by edgeorge on 08/04/16.
+ */
+public class VimeoExtractor {
+
+    //Singleton
+    private static VimeoExtractor instance;
+
+    private VimeoExtractor(){}
+
+    /**
+     * Get singleton instance of the extractor
+     * @return singleton instance
+     */
+    public static VimeoExtractor getInstance() {
+        if(instance == null){
+            instance = new VimeoExtractor();
+        }
+        return instance;
+    }
+
+    /**
+     * Get Video stream information using its identifier
+     * @param identifier Numeric video identifier (e.g. 123456)
+     * @param referrer Video referrer URL
+     * @param listener Callback from extraction
+     */
+    public void fetchVideoWithIdentifier(@NonNull String identifier, @Nullable String referrer, @NonNull final OnVimeoExtractionListener listener){
+        //If an invalid identifier is entered, throw an error
+        if(identifier.length() == 0){
+            listener.onFailure(new IllegalArgumentException("Video identifier cannot be empty"));
+            return;
+        }
+
+        final VimeoAPIManager manager = new VimeoAPIManager();
+        try {
+            manager.extractWithIdentifier(identifier, referrer).enqueue(new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    listener.onFailure(e);
+                }
+
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+                    //Check if response is successful
+                    if(response.isSuccessful()) {
+                        //Generate video object from JSON response
+                        VimeoVideo vimeoVideo = new VimeoVideo(response.body().string());
+                        listener.onSuccess(vimeoVideo);
+                    }else{
+                        //Generate an appropriate error
+                        listener.onFailure(manager.getError(response));
+                    }
+                }
+            });
+        } catch (IOException e) {
+            listener.onFailure(e);
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Get Video stream information from its full URL
+     * @param videoURL Video URL
+     * @param referrer Video referrer URL
+     * @param listener Callback from extraction
+     */
+    public void fetchVideoWithURL(@NonNull String videoURL, @Nullable String referrer, @NonNull final OnVimeoExtractionListener listener){
+        //Check for valid URL length
+        if(videoURL.length() == 0){
+            listener.onFailure(new IllegalArgumentException("Video URL cannot be empty"));
+            return;
+        }
+
+        VimeoParser parser = new VimeoParser(videoURL);
+        //Determine if Vimeo URL is valid
+        if(!parser.isVimeoURLValid()) {
+            listener.onFailure(new IllegalArgumentException("Vimeo URL is not valid"));
+            return;
+        }
+
+        //Extract identifier from URL
+        String identifier = parser.getExtractedIdentifier();
+        //Get Video stream information using its identifier
+        fetchVideoWithIdentifier(identifier, referrer, listener);
+    }
+
+}
