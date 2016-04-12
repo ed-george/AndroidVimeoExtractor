@@ -6,7 +6,7 @@
 ###Add to project
 To use this library, simply add JitPack as a repository source in your `build.gradle` at the end of the repositories section:
 
-```
+```groovy
 repositories {
    // ...
    maven { url "https://jitpack.io" }
@@ -15,7 +15,7 @@ repositories {
 
 Step 2: Add the dependency to your dependency list and replace ending with latest version
 
-```
+```groovy
 dependencies {
     // ...
     compile 'com.github.ed-george:AndroidVimeoExtractor:<latest-version>'
@@ -30,8 +30,7 @@ NOTE: To get the latest version visit [this link](https://jitpack.io/#ed-george/
 
 Video information can be extracted from an identifier:
 
-
-```
+```java
 VimeoExtractor.getInstance().fetchVideoWithIdentifier("1234", null, new OnVimeoExtractionListener() {
             @Override
             public void onSuccess(VimeoVideo video) {
@@ -48,7 +47,7 @@ VimeoExtractor.getInstance().fetchVideoWithIdentifier("1234", null, new OnVimeoE
 
 Or alternatively from a full video url:
 
-```
+```java
 VimeoExtractor.getInstance().fetchVideoWithURL("https://vimeo.com/1234", null, new OnVimeoExtractionListener() {
             @Override
             public void onSuccess(VimeoVideo video) {
