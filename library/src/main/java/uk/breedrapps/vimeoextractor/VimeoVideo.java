@@ -44,8 +44,8 @@ public class VimeoVideo {
                     .getJSONArray("progressive");
 
             //Get info for each stream available
-            for (int i = 0; i < streamArray.length(); i++) {
-                JSONObject stream = streamArray.getJSONObject(i);
+            for (int streamIndex = 0; streamIndex < streamArray.length(); streamIndex++) {
+                JSONObject stream = streamArray.getJSONObject(streamIndex);
                 String url = stream.getString("url");
                 String quality = stream.getString("quality");
                 //Store stream information
