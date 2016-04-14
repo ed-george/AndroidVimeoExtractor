@@ -4,7 +4,7 @@ import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
 /**
- * Parser for a Vimeo Link
+ * Parser for a given Vimeo Link
  */
 class VimeoParser {
 
