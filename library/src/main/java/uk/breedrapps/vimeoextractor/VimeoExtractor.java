@@ -10,7 +10,8 @@ import okhttp3.Callback;
 import okhttp3.Response;
 
 /**
- * Created by edgeorge on 08/04/16.
+ * Main public facing class that can be used to extract Vimeo video information
+ * through an all-digit video identifier or a full video URL.
  */
 public class VimeoExtractor {
 
