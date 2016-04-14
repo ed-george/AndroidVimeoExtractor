@@ -6,7 +6,7 @@ import android.text.TextUtils;
 /**
  * Parser for a Vimeo Link
  */
-public class VimeoParser {
+class VimeoParser {
 
     //Full URL of Vimeo video
     private String url;

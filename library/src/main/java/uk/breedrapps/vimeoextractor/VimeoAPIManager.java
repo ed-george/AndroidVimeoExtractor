@@ -13,7 +13,7 @@ import okhttp3.Response;
 /**
  * An API and request manager for Vimeo's web service.
  */
-public class VimeoAPIManager {
+class VimeoAPIManager {
 
     //Base URL for Vimeo videos
     protected static final String VIMEO_URL = "https://vimeo.com/%s";
