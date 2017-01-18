@@ -24,6 +24,8 @@ public class VimeoVideo {
     private Map<String, String> streams;
     //Stream thumbnails with key being quality and value url of image
     private Map<String, String> thumbs;
+    //User that created video
+    private VimeoUser videoUser;
 
     //Initialise VimeoVideo from JSON
     protected VimeoVideo(@NonNull String json){
@@ -41,6 +43,10 @@ public class VimeoVideo {
             JSONObject videoInfo = requestJson.getJSONObject("video");
             this.duration = videoInfo.getLong("duration");
             this.title = videoInfo.getString("title");
+
+            //Get user information
+            JSONObject userInfo = videoInfo.getJSONObject("owner");
+            this.videoUser = new VimeoUser(userInfo);
 
             //Get thumbnail information
             JSONObject thumbsInfo = videoInfo.getJSONObject("thumbs");
@@ -128,5 +134,13 @@ public class VimeoVideo {
      */
     public Map<String, String> getThumbs() {
         return thumbs;
+    }
+
+    /**
+     * Get information on the user that created / uploaded the video
+     * @return VimeoUser object containing information on the user
+     */
+    public VimeoUser getVideoUser() {
+        return videoUser;
     }
 }
