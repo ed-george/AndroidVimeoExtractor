@@ -7,6 +7,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 /**
@@ -21,10 +22,13 @@ public class VimeoVideo {
     private long duration;
     //Stream information with key being quality name (e.g. 1080p) and value stream url
     private Map<String, String> streams;
+    //Stream thumbnails with key being quality and value url of image
+    private Map<String, String> thumbs;
 
     //Initialise VimeoVideo from JSON
     protected VimeoVideo(@NonNull String json){
         streams = new HashMap<>();
+        thumbs = new HashMap<>();
         parseJson(json);
     }
 
@@ -37,6 +41,14 @@ public class VimeoVideo {
             JSONObject videoInfo = requestJson.getJSONObject("video");
             this.duration = videoInfo.getLong("duration");
             this.title = videoInfo.getString("title");
+
+            //Get thumbnail information
+            JSONObject thumbsInfo = videoInfo.getJSONObject("thumbs");
+            Iterator<String> iterator;
+            for(iterator = thumbsInfo.keys(); iterator.hasNext();) {
+                String key = iterator.next();
+                this.thumbs.put(key, thumbsInfo.getString(key));
+            }
 
             //Access video stream information
             JSONArray streamArray = requestJson.getJSONObject("request")
@@ -51,6 +63,7 @@ public class VimeoVideo {
                 //Store stream information
                 this.streams.put(quality, url);
             }
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -98,4 +111,22 @@ public class VimeoVideo {
         return streams;
     }
 
+    /**
+     * Check if video has associated thumbnails
+     * @return true if thumbnails are present; false otherwise
+     */
+    public boolean hasThumbs() {
+        return this.thumbs.size() > 0;
+    }
+
+    /**
+     * Get thumbnail information in the form of a key-value map.
+     * Keys are the quality information of the thumbnail (e.g. base, 640, 1280)
+     * The default key returned from Vimeo's API is "base"
+     * Values are the corresponding thumbnail image URL
+     * @return Map of available thumbnails for video
+     */
+    public Map<String, String> getThumbs() {
+        return thumbs;
+    }
 }
