@@ -10,8 +10,12 @@ import okhttp3.Callback;
 import okhttp3.Response;
 
 /**
- * Main public facing class that can be used to extract Vimeo video information
+ * A class used to extract Vimeo video information
  * through an all-digit video identifier or a full video URL.
+ *
+ * Information includes stream urls, title and duration.
+ *
+ * See {@link VimeoVideo} for full information available
  */
 public class VimeoExtractor {
 
@@ -33,8 +37,8 @@ public class VimeoExtractor {
 
     /**
      * Get Video stream information using its identifier
-     * @param identifier Numeric video identifier (e.g. 123456)
-     * @param referrer Video referrer URL
+     * @param identifier Non-null numeric video identifier (e.g. 123456)
+     * @param referrer Video referrer URL. Leaving as null provides referrer as video url by default
      * @param listener Callback from extraction
      */
     public void fetchVideoWithIdentifier(@NonNull String identifier, @Nullable String referrer, @NonNull final OnVimeoExtractionListener listener){
