@@ -3,7 +3,8 @@
 
 *Inspired by [YTVimeoExtractor](https://github.com/lilfaf/YTVimeoExtractor) for iOS.*
 
-###Add to project
+### Add to project 
+
 To use this library, simply add JitPack as a repository source in your `build.gradle` at the end of the repositories section:
 
 ```groovy
@@ -25,7 +26,8 @@ dependencies {
 That's it!
 NOTE: To get the latest version visit [this link](https://jitpack.io/#ed-george/AndroidVimeoExtractor)
 
-###Usage
+### Usage
+
 **Requires Minimum SDK 9 - Android 2.3**
 
 Video information can be extracted from an identifier:
@@ -63,8 +65,11 @@ VimeoExtractor.getInstance().fetchVideoWithURL("https://vimeo.com/1234", null, n
 ```
 Please build and read the documentation for a better oversight of the information available from each video.
 
+#### Private Videos
 
-###License
+When requesting information on private videos - pass the referrer parameter as `null`, this will ensure the default header is sent and should avoid any HTTP 403 Forbidden errors.
+
+### License
 
 
     The MIT License (MIT)
@@ -89,6 +94,7 @@ Please build and read the documentation for a better oversight of the informatio
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
     
-####Finally...
+#### Finally...
+
 This library is in no way associated with Vimeo. Please only use this library at your own risk after accepting and acknowledging the [Vimeo Terms of Service](https://vimeo.com/terms).
 
