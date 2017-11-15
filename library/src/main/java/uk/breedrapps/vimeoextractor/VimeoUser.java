@@ -28,9 +28,10 @@ public class VimeoUser {
     // User Id
     private long id;
 
-    private VimeoUser(){}
+    private VimeoUser() {
+    }
 
-    VimeoUser(JSONObject userObject){
+    VimeoUser(JSONObject userObject) {
         this.accountType = userObject.optString("account_type");
         this.name = userObject.optString("name");
         this.imageUrl = userObject.optString("img");
@@ -41,6 +42,7 @@ public class VimeoUser {
 
     /**
      * Get account type of user - e.g. plus, basic
+     *
      * @return Account type of user
      */
     public String getAccountType() {
@@ -49,6 +51,7 @@ public class VimeoUser {
 
     /**
      * Get full name of user
+     *
      * @return Name of user
      */
     public String getName() {
@@ -57,6 +60,7 @@ public class VimeoUser {
 
     /**
      * Profile image of user
+     *
      * @return Image url
      */
     public String getImageUrl() {
@@ -65,6 +69,7 @@ public class VimeoUser {
 
     /**
      * Larger profile image of user
+     *
      * @return HQ image url
      */
     public String getImage2xUrl() {
@@ -73,6 +78,7 @@ public class VimeoUser {
 
     /**
      * Profile URL of the user
+     *
      * @return url of profile
      */
     public String getUrl() {
@@ -81,6 +87,7 @@ public class VimeoUser {
 
     /**
      * Get the Vimeo assigned ID for the user
+     *
      * @return id for user
      */
     public long getId() {
