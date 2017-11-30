@@ -28,7 +28,7 @@ public class VimeoVideo {
     private VimeoUser videoUser;
 
     //Initialise VimeoVideo from JSON
-    protected VimeoVideo(@NonNull String json) {
+    protected VimeoVideo(@NonNull String json){
         streams = new HashMap<>();
         thumbs = new HashMap<>();
         parseJson(json);
@@ -51,7 +51,7 @@ public class VimeoVideo {
             //Get thumbnail information
             JSONObject thumbsInfo = videoInfo.getJSONObject("thumbs");
             Iterator<String> iterator;
-            for (iterator = thumbsInfo.keys(); iterator.hasNext(); ) {
+            for(iterator = thumbsInfo.keys(); iterator.hasNext();) {
                 String key = iterator.next();
                 this.thumbs.put(key, thumbsInfo.getString(key));
             }
@@ -77,7 +77,6 @@ public class VimeoVideo {
 
     /**
      * Video title
-     *
      * @return the video title
      */
     public String getTitle() {
@@ -86,7 +85,6 @@ public class VimeoVideo {
 
     /**
      * Video duration in seconds
-     *
      * @return the video duration
      */
     public long getDuration() {
@@ -95,19 +93,17 @@ public class VimeoVideo {
 
     /**
      * Check if given video has stream information
-     *
      * @return true if information is present, false otherwise
      */
-    public boolean hasStreams() {
+    public boolean hasStreams(){
         return streams.size() > 0;
     }
 
     /**
      * Check if video has HD stream available
-     *
      * @return true if 1080 or 4096p streams are available, false otherwise
      */
-    public boolean isHD() {
+    public boolean isHD(){
         return streams.containsKey("1080p") || streams.containsKey("4096p");
     }
 
@@ -115,7 +111,6 @@ public class VimeoVideo {
      * Get stream information in the form of a key-value map.
      * Keys are the quality information of the stream (e.g. 1080p)
      * Values are the corresponding stream URL
-     *
      * @return Map of streams for video
      */
     public Map<String, String> getStreams() {
@@ -124,7 +119,6 @@ public class VimeoVideo {
 
     /**
      * Check if video has associated thumbnails
-     *
      * @return true if thumbnails are present; false otherwise
      */
     public boolean hasThumbs() {
@@ -136,7 +130,6 @@ public class VimeoVideo {
      * Keys are the quality information of the thumbnail (e.g. base, 640, 1280)
      * The default key returned from Vimeo's API is "base"
      * Values are the corresponding thumbnail image URL
-     *
      * @return Map of available thumbnails for video
      */
     public Map<String, String> getThumbs() {
@@ -145,7 +138,6 @@ public class VimeoVideo {
 
     /**
      * Get information on the user that created / uploaded the video
-     *
      * @return VimeoUser object containing information on the user
      */
     public VimeoUser getVideoUser() {

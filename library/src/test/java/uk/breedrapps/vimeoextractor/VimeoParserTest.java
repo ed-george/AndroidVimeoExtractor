@@ -27,7 +27,7 @@ public class VimeoParserTest {
     private VimeoParser validParser, invalidParser;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() throws Exception{
         //Create parsers for a valid and an invalid Vimeo URL
         validParser = new VimeoParser("http://vimeo.com/12345");
         invalidParser = new VimeoParser("http://vimeo.com/foo");

@@ -22,9 +22,8 @@ class VimeoAPIManager {
 
     /**
      * Builds an HTTP call to Vimeo, from an identifier, to extract video information
-     *
      * @param identifier Vimeo video identifier
-     * @param referrer   Video referrer, null if none present
+     * @param referrer Video referrer, null if none present
      * @return an OKHttp3 Call to use asynchronously or otherwise.
      * @throws IOException If a connection or other error occurs
      */
@@ -32,30 +31,29 @@ class VimeoAPIManager {
 
         String url = String.format(VIMEO_CONFIG_URL, identifier);
 
-        if (referrer == null) {
+        if(referrer == null){
             //If no referrer exists, generate from base URL
             referrer = String.format(VIMEO_URL, identifier);
         }
 
-        OkHttpClient client = new OkHttpClient();
-        Request request = new Request.Builder()
-                .url(url)
-                .header("Content-Type", "application/json")
-                .header("Referer", referrer)
-                .build();
+            OkHttpClient client = new OkHttpClient();
+            Request request = new Request.Builder()
+                    .url(url)
+                    .header("Content-Type", "application/json")
+                    .header("Referer", referrer)
+                    .build();
 
-        return client.newCall(request);
+            return client.newCall(request);
     }
 
     /**
      * Generates an appropriate error for a given response
-     *
      * @param response The response that was not successful
      * @return An Exception based on the HTTP Status code of the response
      */
     protected Throwable getError(Response response) {
 
-        switch (response.code()) {
+        switch (response.code()){
             case 404:
                 return new IOException("Video could not be found");
             case 403:
