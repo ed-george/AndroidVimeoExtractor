@@ -98,3 +98,8 @@ When requesting information on private videos - pass the referrer parameter as `
 
 This library is in no way associated with Vimeo. Please only use this library at your own risk after accepting and acknowledging the [Vimeo Terms of Service](https://vimeo.com/terms).
 
+
+## Support on Beerpay
+Hey dude! Help me out for a couple of :beers:!
+
+[![Beerpay](https://beerpay.io/ed-george/AndroidVimeoExtractor/badge.svg?style=beer-square)](https://beerpay.io/ed-george/AndroidVimeoExtractor)  [![Beerpay](https://beerpay.io/ed-george/AndroidVimeoExtractor/make-wish.svg?style=flat-square)](https://beerpay.io/ed-george/AndroidVimeoExtractor?focus=wish)
