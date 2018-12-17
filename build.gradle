@@ -1,16 +1,19 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
-
-buildscript {
-    repositories {
-        jcenter()
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.0'
-    }
+plugins {
+    id 'java'
 }
 
-allprojects {
-    repositories {
-        jcenter()
-    }
+group 'uk.breedrapps'
+version '1.2'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.squareup.okhttp3:okhttp:3.12.0'
+    implementation 'org.jetbrains:annotations:16.0.2'
+    implementation 'org.json:json:20180813'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
 }

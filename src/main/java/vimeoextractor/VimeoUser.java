@@ -1,7 +1,6 @@
-package uk.breedrapps.vimeoextractor;
+package vimeoextractor;
 
-import android.support.annotation.Nullable;
-
+import com.sun.istack.internal.Nullable;
 import org.json.JSONObject;
 
 /**

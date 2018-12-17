@@ -1,4 +1,4 @@
-package uk.breedrapps.vimeoextractor;
+package vimeoextractor;
 
 /**
  * Callback from Vimeo Stream extraction, providing video information on success
