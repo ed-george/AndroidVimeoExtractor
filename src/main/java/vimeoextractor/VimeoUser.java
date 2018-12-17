@@ -1,6 +1,6 @@
 package vimeoextractor;
 
-import com.sun.istack.internal.Nullable;
+import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
 
 /**
