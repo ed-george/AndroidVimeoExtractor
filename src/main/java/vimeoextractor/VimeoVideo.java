@@ -1,7 +1,6 @@
-package uk.breedrapps.vimeoextractor;
+package vimeoextractor;
 
-import android.support.annotation.NonNull;
-
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -28,7 +27,7 @@ public class VimeoVideo {
     private VimeoUser videoUser;
 
     //Initialise VimeoVideo from JSON
-    protected VimeoVideo(@NonNull String json){
+    protected VimeoVideo(@NotNull String json){
         streams = new HashMap<>();
         thumbs = new HashMap<>();
         parseJson(json);

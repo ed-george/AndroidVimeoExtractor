@@ -1,13 +1,12 @@
-package uk.breedrapps.vimeoextractor;
-
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-
-import java.io.IOException;
+package vimeoextractor;
 
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+import java.io.IOException;
 
 /**
  * A class used to extract Vimeo video information
@@ -41,7 +40,7 @@ public class VimeoExtractor {
      * @param referrer Video referrer URL. Leaving as null provides referrer as video url by default
      * @param listener Callback from extraction
      */
-    public void fetchVideoWithIdentifier(@NonNull String identifier, @Nullable String referrer, @NonNull final OnVimeoExtractionListener listener){
+    public void fetchVideoWithIdentifier(@NotNull String identifier, @Nullable String referrer, @NotNull final OnVimeoExtractionListener listener){
         //If an invalid identifier is entered, throw an error
         if(identifier.length() == 0){
             listener.onFailure(new IllegalArgumentException("Video identifier cannot be empty"));
@@ -81,7 +80,7 @@ public class VimeoExtractor {
      * @param referrer Video referrer URL
      * @param listener Callback from extraction
      */
-    public void fetchVideoWithURL(@NonNull String videoURL, @Nullable String referrer, @NonNull final OnVimeoExtractionListener listener){
+    public void fetchVideoWithURL(@NotNull String videoURL, @Nullable String referrer, @NotNull final OnVimeoExtractionListener listener){
         //Check for valid URL length
         if(videoURL.length() == 0){
             listener.onFailure(new IllegalArgumentException("Video URL cannot be empty"));

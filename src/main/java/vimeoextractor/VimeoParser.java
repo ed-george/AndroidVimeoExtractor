@@ -1,12 +1,12 @@
-package uk.breedrapps.vimeoextractor;
+package vimeoextractor;
 
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
+
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Parser for a given Vimeo Link
  */
-public class VimeoParser {
+class VimeoParser {
 
     //Full URL of Vimeo video
     private String url;
@@ -15,7 +15,7 @@ public class VimeoParser {
      * Initialise VideoParser with url
      * @param url Vimeo Video url
      */
-    public VimeoParser(@NonNull String url){
+    public VimeoParser(@NotNull String url){
         this.url = url;
     }
 
@@ -25,7 +25,7 @@ public class VimeoParser {
      */
     public boolean isVimeoURLValid(){
         String videoID = getExtractedIdentifier();
-        return videoID.length() > 0 && TextUtils.isDigitsOnly(videoID);
+        return videoID.length() > 0 && VimeoUtils.isDigitsOnly(videoID);
     }
 
     /**
